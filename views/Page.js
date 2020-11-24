@@ -6,7 +6,10 @@ export default function Page(props)
 {
     return(
         <View style={css.textPage}>
-            <Text>O nome da empresa é {props.empresa} e seu dono é {props.name}</Text>
+            <Text>
+                O nome da empresa é {props.empresa} e seu dono é {props.nome}
+                Comprou o produto {props.produto} na seguinte quantidade {props.quantidade}
+            </Text>
         </View>
     );
 }
