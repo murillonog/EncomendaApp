@@ -1,33 +1,22 @@
-import { StatusBar } from 'expo-status-bar';
 import React, {useState, useEffect} from 'react';
 import { Text, View, Button, Alert } from 'react-native';
 import {css} from './assets/css/Css';
-import Page from './views/Page';
+import {NavigationContainer} from '@react-navigation/native'
+import {createStackNavigator} from '@react-navigation/stack'
+import Home from './views/Home';
+import Login from './views/Login';
 
-export default function App() {
-  const [product, setProduct] = useState('bola');
-  const [quantity, setQuantity] = useState(0);
+export default function App() { 
+  
+  const Stack = createStackNavigator();
 
-  useEffect(()=>{
-    if(quantity > 0){
-      Alert.alert('Novo produto foi adicionado');
-    }
-  }, [quantity])
-
-  const props = {
-    empresa: 'NogLoc S.A.',
-    nome:'Murillo Nogueira',
-    produto: product,
-    quantidade: quantity
-  }
-
-  return (    
-    <View style={css.container}>
-      <Text>{product}</Text>
-      <Page {...props}/>
-      <Button title='Adicionar produtos' onPress={()=>setQuantity(quantity+1)}/>
-      <StatusBar style="auto" />
-    </View>
+  return ( 
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen name="Login" component={Login} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
